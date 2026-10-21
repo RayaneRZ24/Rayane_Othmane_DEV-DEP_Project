@@ -11,7 +11,43 @@ La version est figée dans [config/dataset.json](config/dataset.json).
 Lire [l'étude et la décision](docs_informatifs/choix_dataset.md) avant de développer l'agent.
 La [conception préliminaire](docs_informatifs/conception_preliminaire.md) définit le périmètre,
 les cas d'utilisation, l'architecture et les critères de réception proposés.
-Les résultats bruts de l'audit sont dans `reports/`. L'application n'est pas encore développée.
+La [conception détaillée](docs_informatifs/conception_detaillee.md) fixe les technologies,
+les modules, les règles de relecture et de détection, ainsi que le modèle de stockage.
+Le [contrat API v1](docs_informatifs/contrat_api_v1.md) décrit les routes à implémenter.
+La [stratégie technologique](docs_informatifs/strategie_technologique.md) précise le
+rendu visuel attendu et les extensions avancées proposées.
+Les résultats bruts de l'audit sont dans `reports/`. Le socle applicatif est implémenté ;
+la relecture du dataset, la détection et le diagnostic métier restent à développer.
+
+## Lancer le socle applicatif
+
+Avec Docker Desktop démarré, depuis la racine :
+
+```powershell
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+docker compose up --build -d
+```
+
+Interface : <http://localhost:3000>. API : <http://localhost:18000/docs>.
+L'écran affiche la disponibilité des services, la latence et la synchronisation live.
+Les vérifications techniques de persistance restent accessibles dans l'API et les tests.
+Les courbes montrent des temps de réponse réellement mesurés ; elles ne rejouent pas encore RCAEval.
+Voir [le guide de démarrage et de test](docs_informatifs/demarrage.md).
+Le [rapport de validation](reports/validation_socle.md) décrit les builds, les cinq
+tests backend et les deux tests navigateur effectivement exécutés.
+
+## Stack applicative retenue
+
+- Frontend dédié : **Next.js, React, TypeScript, Tailwind CSS et shadcn/ui**.
+- Graphiques : **Apache ECharts** ; synchronisation : **TanStack Query et SSE**.
+- Backend : **FastAPI et Pydantic** ; analyse : Python.
+- Stockage : **PostgreSQL**, modèles SQLAlchemy, pilote Psycopg 3 et migrations Alembic ; télémétrie brute en Parquet.
+- Livraison : Docker Compose, pytest, Playwright et GitHub Actions.
+
+L'interface doit être une console d'observabilité conçue sur mesure. Streamlit est
+exclu du projet à la demande de l'utilisateur. MLflow, OpenTelemetry et un diagnostic
+orchestré avec LangGraph sont des extensions planifiées ou proposées, pas des composants
+déjà installés ou implémentés.
 
 ## Reproduire l'étude
 
@@ -47,7 +83,10 @@ remplacent pas une vérification d'intégrité auprès de l'éditeur.
 
 ## Prochaine étape
 
-Relire la conception préliminaire, puis détailler les contrats des modules et les choix techniques.
-Implémenter ensuite une première chaîne : relecture, détection simple et rapport d'incident.
+Brancher les scénarios préparés sur le socle : relecture déterministe, détection simple
+et persistance d'un incident. Les routes de relecture et de diagnostic sont décrites
+dans le contrat cible ; elles ne sont pas encore exposées par l'API.
+Les paramètres de [monitoring.example.json](config/monitoring.example.json) sont des valeurs
+initiales de conception, non validées expérimentalement. Aucun résultat de modèle n'est annoncé.
 Les recommandations correctives viendront de procédures documentées : le dataset n'annote pas
 la réussite d'actions de remédiation.

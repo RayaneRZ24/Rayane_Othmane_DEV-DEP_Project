@@ -276,9 +276,10 @@ rapportée par les mesures expérimentales, y compris quand les résultats sont 
 
 Le déploiement cible initial est une machine locale : interface, service applicatif,
 moteur d'analyse et stockage. Le code de traitement utilisera Python, déjà employé
-pour l'audit. Le choix précis du framework d'API, de l'interface et du stockage
-reste à fixer pendant la conception détaillée. Cette décision ne nécessite pas de
-créer immédiatement plusieurs services réseau.
+pour l'audit. La [conception détaillée](conception_detaillee.md) précise désormais
+le socle : frontend Next.js/TypeScript, API FastAPI et PostgreSQL, avec un lancement
+Docker Compose. La [stratégie technologique](strategie_technologique.md) fixe les
+exigences de rendu moderne et les extensions avancées envisagées.
 
 Une configuration de conteneurisation devra conserver les données et résultats
 dans des volumes et fournir un contrôle de disponibilité. Le déploiement distant,
@@ -289,8 +290,9 @@ si retenu ensuite, demandera de préciser accès, persistance et ressources.
 | Jalon | Livrable vérifiable |
 |---|---|
 | Déjà réalisé : données | Dataset choisi, fichiers téléchargés, audit et provenance |
-| En cours : conception préliminaire | Présent document : périmètre, architecture et critères |
-| Conception détaillée | Schémas de données, contrats des modules, choix techniques et paramètres du protocole |
+| Rédigée : conception préliminaire | Présent document : périmètre, architecture et critères |
+| Rédigée : conception détaillée | Schémas de données, contrats des modules, choix techniques et paramètres du protocole |
+| Implémenté : socle d'intégration | Frontend Next.js, API FastAPI, PostgreSQL, migration et test SSE ; aucun diagnostic métier à ce stade |
 | Première chaîne verticale | Relecture d'un cas, détection simple, incident et rapport minimal |
 | Diagnostic | Exploitation des logs, preuves et recommandations ; prototype traces |
 | Interface et déploiement | Trois vues, historique, export et lancement reproductible |

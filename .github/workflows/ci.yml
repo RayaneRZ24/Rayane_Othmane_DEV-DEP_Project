@@ -1,0 +1,68 @@
+name: Socle applicatif
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_USER: smartops
+          POSTGRES_PASSWORD: ci_only_password
+          POSTGRES_DB: smartops
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U smartops -d smartops"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://smartops:ci_only_password@127.0.0.1:5432/smartops
+      TEST_DATABASE_URL: postgresql+psycopg://smartops:ci_only_password@127.0.0.1:5432/smartops
+      NEXT_TELEMETRY_DISABLED: "1"
+      BACKEND_URL: http://127.0.0.1:8000
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.12.1"
+          python-version: "3.13"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: uv sync --locked
+      - run: uv run --no-sync pytest -q
+      - run: uv run --no-sync alembic upgrade head
+      - run: npm ci --no-fund --no-audit
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Start application and check readiness
+        run: |
+          uv run --no-sync uvicorn smartops.api:app --host 127.0.0.1 --port 8000 > backend-ci.log 2>&1 &
+          npm --prefix frontend start > frontend-ci.log 2>&1 &
+          python - <<'PY'
+          import time, urllib.request
+          for url in ['http://127.0.0.1:8000/health', 'http://127.0.0.1:3000']:
+              for attempt in range(60):
+                  try:
+                      with urllib.request.urlopen(url, timeout=2) as response:
+                          if response.status == 200:
+                              break
+                  except Exception:
+                      time.sleep(.5)
+              else:
+                  raise SystemExit('Application readiness failed')
+          PY
+      - run: npm run test:e2e
+        working-directory: frontend

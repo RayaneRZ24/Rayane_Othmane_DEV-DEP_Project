@@ -1,0 +1,10 @@
+.git
+.env
+.venv
+.uv-cache
+.npm-cache
+data
+reports
+frontend
+tests
+**/__pycache__

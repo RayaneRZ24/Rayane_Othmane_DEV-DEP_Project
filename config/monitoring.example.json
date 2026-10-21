@@ -1,0 +1,42 @@
+{
+  "schema_version": "1",
+  "status": "initial_unvalidated_design",
+  "replay": {
+    "step_ms": 1000,
+    "speed": 10,
+    "max_active_runs": 1
+  },
+  "detector": {
+    "name": "robust_reference",
+    "warmup_seconds": 300,
+    "min_observations": 120,
+    "robust_z_threshold": 6.0,
+    "constant_absolute_tolerance": 1e-9,
+    "constant_relative_tolerance": 1e-6,
+    "persistence_window_seconds": 10,
+    "min_observed_seconds": 5,
+    "min_anomalous_seconds": 5,
+    "imputation": "none",
+    "update_reference_after_warmup": false
+  },
+  "incidents": {
+    "group_gap_seconds": 60
+  },
+  "diagnosis": {
+    "context_seconds": 120,
+    "refresh_seconds": 10,
+    "metric_weight": 0.8,
+    "log_weight": 0.2,
+    "abstention_threshold": null,
+    "abstention_threshold_status": "select_on_validation_before_test",
+    "traces_enabled": false
+  },
+  "evaluation": {
+    "development_repetition": 1,
+    "validation_repetition": 2,
+    "test_repetition": 3,
+    "detection_horizon_seconds": 180,
+    "known_incident_diagnosis_delay_seconds": 60,
+    "end_to_end_diagnosis_delay_seconds": 60
+  }
+}

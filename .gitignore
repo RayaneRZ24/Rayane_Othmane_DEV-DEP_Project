@@ -3,3 +3,17 @@ __pycache__/
 data/
 *.pyc
 reports/*_run.log
+.env
+.env.*
+!.env.example
+.uv-cache/
+.npm-cache/
+node_modules/
+.next/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+playwright-report/
+test-results/
+*.tsbuildinfo
