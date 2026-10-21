@@ -1,0 +1,15 @@
+{
+  "name": "RCAEval",
+  "subset": "RE2-OB",
+  "system": "Online Boutique",
+  "repository": "phamquiluan/RCAEval",
+  "revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "decision_date": "2026-10-21",
+  "expected_cases": 90,
+  "modalities": ["metrics", "logs", "traces"],
+  "license_declared_on_dataset_card": "MIT",
+  "initial_download": "all metrics and logs, traces for six representative incidents",
+  "faults": ["cpu", "mem", "disk", "delay", "loss", "socket"],
+  "ground_truth_use": "evaluation only; never expose the case path, fault label, root-cause label or injection time to the monitoring agent",
+  "service_aliases": {"frontendservice": "frontend"}
+}

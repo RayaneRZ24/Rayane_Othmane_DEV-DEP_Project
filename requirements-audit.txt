@@ -1,0 +1,6 @@
+# Python 3.11; versions used for the dataset audit.
+requests==2.33.1
+numpy==2.4.6
+pandas==2.2.2
+pyarrow==16.0.0
+matplotlib==3.11.2

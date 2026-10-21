@@ -1,0 +1,271 @@
+{
+  "revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "cases": [
+    "re2ss_carts_cpu_1",
+    "re2ss_catalogue_delay_1",
+    "re2ss_orders_disk_1",
+    "re2ss_payment_loss_1",
+    "re2ss_user_mem_1",
+    "re2ss_carts_socket_1",
+    "re2ob_checkoutservice_cpu_1",
+    "re2ob_currencyservice_delay_1",
+    "re2ob_emailservice_disk_1",
+    "re2ob_productcatalogservice_loss_1",
+    "re2ob_recommendationservice_mem_1",
+    "re2ob_checkoutservice_socket_1"
+  ],
+  "files": [
+    {
+      "path": "re2ob_checkoutservice_cpu_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_cpu_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "c17fcaa1047c07738176849000c1b88e1f0ddda57a2a73a42ab0c8c58c83e0a3"
+    },
+    {
+      "path": "re2ob_checkoutservice_cpu_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_cpu_1/logs.parquet",
+      "bytes": 336876,
+      "sha256": "e1a25e50c8b0beae4b2886df54d86d2f28877d0b611fed98411e9c0b0c77dad3"
+    },
+    {
+      "path": "re2ob_checkoutservice_cpu_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_cpu_1/metrics.parquet",
+      "bytes": 157212,
+      "sha256": "f46b3d354b234e37c424f54a005329b61aac83d15dcdd46b5642e55f390ab25a"
+    },
+    {
+      "path": "re2ob_checkoutservice_cpu_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_cpu_1/traces.parquet",
+      "bytes": 10146857,
+      "sha256": "56ca8f6dbeb76fab2d33faeca54bce8f40e9c5491ebd76404ebb2dfd83409367"
+    },
+    {
+      "path": "re2ob_checkoutservice_socket_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_socket_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "38a03d2cffa1bb4f8da75315f566ab7ca484b7c25e8b2547ce135f9a3ab7bffa"
+    },
+    {
+      "path": "re2ob_checkoutservice_socket_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_socket_1/logs.parquet",
+      "bytes": 335235,
+      "sha256": "62dc94f259a7c644a35f2accff1f30bf070532cdd286a2e2b11429f99a6a046c"
+    },
+    {
+      "path": "re2ob_checkoutservice_socket_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_socket_1/metrics.parquet",
+      "bytes": 174494,
+      "sha256": "51fafedd0f3f0d8a0075adf3c23f9414708f4f1d2da85cf384b8165b31b26f09"
+    },
+    {
+      "path": "re2ob_checkoutservice_socket_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_checkoutservice_socket_1/traces.parquet",
+      "bytes": 10179545,
+      "sha256": "ca7f15c502c6e7453169cfa3d76f0476083148f905ddf2712da802b086b8e30c"
+    },
+    {
+      "path": "re2ob_currencyservice_delay_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_currencyservice_delay_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "939e7b2a0b2d465dc22075f479b38548c47759c612cf0c5b6e72dbc954c9553a"
+    },
+    {
+      "path": "re2ob_currencyservice_delay_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_currencyservice_delay_1/logs.parquet",
+      "bytes": 321294,
+      "sha256": "32c77b4bcdeba1e0fa770c96417c79616b7c6c41576644d193e1d5a2944c4b1d"
+    },
+    {
+      "path": "re2ob_currencyservice_delay_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_currencyservice_delay_1/metrics.parquet",
+      "bytes": 158114,
+      "sha256": "5a7291e34ce019824e0dafb6c3f2d29153b54563c65795444d9a329e745c4b25"
+    },
+    {
+      "path": "re2ob_currencyservice_delay_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_currencyservice_delay_1/traces.parquet",
+      "bytes": 9806239,
+      "sha256": "9e6b77c4512536fa9d83cb6ff2c037e31af6db28e752891ba35f822d888f23af"
+    },
+    {
+      "path": "re2ob_emailservice_disk_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_emailservice_disk_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "782bc0e87781a862bb07cf32b73a6759db30f338c203a7c6feb5fc265794a75a"
+    },
+    {
+      "path": "re2ob_emailservice_disk_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_emailservice_disk_1/logs.parquet",
+      "bytes": 328129,
+      "sha256": "547891e6dbc4413b0bd9e26aa22abf972b6c8e7aca9d9076d0374218078e287b"
+    },
+    {
+      "path": "re2ob_emailservice_disk_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_emailservice_disk_1/metrics.parquet",
+      "bytes": 160184,
+      "sha256": "3510933da38ebb9940fa59bd53cbfad4f9f966b3b1402a9879f2d5a8a39d7f94"
+    },
+    {
+      "path": "re2ob_emailservice_disk_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_emailservice_disk_1/traces.parquet",
+      "bytes": 10017655,
+      "sha256": "b25ca9bf883885a83d36c548fb5d528d6e608b56ce0080e84ad083cd66fddff8"
+    },
+    {
+      "path": "re2ob_productcatalogservice_loss_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_productcatalogservice_loss_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "a4dcf67714a77a0378fdea43716db5b659d2283d1f64bd5e24f3a0204b731e76"
+    },
+    {
+      "path": "re2ob_productcatalogservice_loss_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_productcatalogservice_loss_1/logs.parquet",
+      "bytes": 207743,
+      "sha256": "eb3419ac6dc8f6b21af6f75f68ea9ec4fe1f70b4a8b0e9b021d792a7b368bdc9"
+    },
+    {
+      "path": "re2ob_productcatalogservice_loss_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_productcatalogservice_loss_1/metrics.parquet",
+      "bytes": 150383,
+      "sha256": "53a3f66825f8e01efd8ca78931c5cc9e3d2e7c900845c885aa25d8b33c37bce4"
+    },
+    {
+      "path": "re2ob_productcatalogservice_loss_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_productcatalogservice_loss_1/traces.parquet",
+      "bytes": 6972318,
+      "sha256": "4f71566bc777b122a4abdab69d12abdbdd57d6493eb3a2957692ed00a3b57b4a"
+    },
+    {
+      "path": "re2ob_recommendationservice_mem_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_recommendationservice_mem_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "b6d6a179b9a7b8908c3644cb60cf4466ed6b94bb6c2836bc4901b30812173195"
+    },
+    {
+      "path": "re2ob_recommendationservice_mem_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_recommendationservice_mem_1/logs.parquet",
+      "bytes": 340638,
+      "sha256": "fabf3dd6e96baf008a46ca742a612db2fa52a126748c1e1f452cd1af54a8c305"
+    },
+    {
+      "path": "re2ob_recommendationservice_mem_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_recommendationservice_mem_1/metrics.parquet",
+      "bytes": 160320,
+      "sha256": "2d95b75fe4e5c726c74ba53199bcb8377fb0228fa2ed8067838c2a38b4463781"
+    },
+    {
+      "path": "re2ob_recommendationservice_mem_1/traces.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ob_recommendationservice_mem_1/traces.parquet",
+      "bytes": 10184551,
+      "sha256": "3c948e36b46d0a69f569ea091ad8d5485a2669e7c7a67f52077ea7a93e0cd709"
+    },
+    {
+      "path": "re2ss_carts_cpu_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_cpu_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "3f36b0fc7d05c41dc5677b85fa6226b558edd1281a83f632b0495a0b3516ab34"
+    },
+    {
+      "path": "re2ss_carts_cpu_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_cpu_1/logs.parquet",
+      "bytes": 965576,
+      "sha256": "e1cdf34912a1a00b5a612594917c1d5f4aaf82714bed08731f216d53000b913d"
+    },
+    {
+      "path": "re2ss_carts_cpu_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_cpu_1/metrics.parquet",
+      "bytes": 163868,
+      "sha256": "86600d6cb1d76a764602fcc1a5b9fb62e213fe33f01e5366f7cb4682470c9d8e"
+    },
+    {
+      "path": "re2ss_carts_socket_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_socket_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "5bcbbcb618c4b73a20e6635a88912184cff45e426f274a672a9a94ac78879b53"
+    },
+    {
+      "path": "re2ss_carts_socket_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_socket_1/logs.parquet",
+      "bytes": 1080754,
+      "sha256": "068e77e2e6d9c55f5325f2b2dc4caee6b16f1ae6f05aafd703333fba32ec1f37"
+    },
+    {
+      "path": "re2ss_carts_socket_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_carts_socket_1/metrics.parquet",
+      "bytes": 166459,
+      "sha256": "776f606c19ea31a1949f846825d15d35e8ed71ab27467fab69434a1291614b70"
+    },
+    {
+      "path": "re2ss_catalogue_delay_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_catalogue_delay_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "4e6ad4ca192123ca9961c644b0900e0024c4a57ec55c60c7ebc6d2f5d08f47ab"
+    },
+    {
+      "path": "re2ss_catalogue_delay_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_catalogue_delay_1/logs.parquet",
+      "bytes": 1111561,
+      "sha256": "880db79465d5448de304a22072bc5c535058d6f783779510bc191fa496282eeb"
+    },
+    {
+      "path": "re2ss_catalogue_delay_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_catalogue_delay_1/metrics.parquet",
+      "bytes": 166831,
+      "sha256": "7ee964c5aef51816a519d3dc4a4b707d89a58ee21d1d88d649a608096852a66d"
+    },
+    {
+      "path": "re2ss_orders_disk_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_orders_disk_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "b1c46c258a60fc247cfb2cbe78257c5924aebc4f669488a3e19703efee92aa0c"
+    },
+    {
+      "path": "re2ss_orders_disk_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_orders_disk_1/logs.parquet",
+      "bytes": 789472,
+      "sha256": "61c57b4250ee87aa3d6fba21fbf3c1506aceadb58d538a4ac7eac96970836f45"
+    },
+    {
+      "path": "re2ss_orders_disk_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_orders_disk_1/metrics.parquet",
+      "bytes": 180973,
+      "sha256": "f2563901c968f33b7af328701c6bd4ca65a5ac9398862ea519836962bf9cd15a"
+    },
+    {
+      "path": "re2ss_payment_loss_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_payment_loss_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "6a792964f8e8cebb47658406bb7522d0b64032f53acbe134f746a109cb99baf0"
+    },
+    {
+      "path": "re2ss_payment_loss_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_payment_loss_1/logs.parquet",
+      "bytes": 947072,
+      "sha256": "8fb17973d2e4ad80262441e353568b9cba75f3e660d63b831f983a58d5c6ab66"
+    },
+    {
+      "path": "re2ss_payment_loss_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_payment_loss_1/metrics.parquet",
+      "bytes": 166535,
+      "sha256": "f15f66c05be157814c41df5fd994134a8bbc9f3f4d351f7e896d156306837d91"
+    },
+    {
+      "path": "re2ss_user_mem_1/inject_time.txt",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_user_mem_1/inject_time.txt",
+      "bytes": 10,
+      "sha256": "f04ac701097cb88e6176bde8fa965c399e1fb5a9ecefc0dc4cab6369100ff75b"
+    },
+    {
+      "path": "re2ss_user_mem_1/logs.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_user_mem_1/logs.parquet",
+      "bytes": 984404,
+      "sha256": "892031c6242bdd07daf346e586d8df1c8471d17acc763a483ff3c96f53991a28"
+    },
+    {
+      "path": "re2ss_user_mem_1/metrics.parquet",
+      "url": "https://huggingface.co/datasets/phamquiluan/RCAEval/resolve/afeacb11bcc94dadfd1c8f483ee4377b2b8b614e/re2ss_user_mem_1/metrics.parquet",
+      "bytes": 166001,
+      "sha256": "9d3699ead96fc022eabcd23200566024a82aa4b76f642ab85bd4bf64c2fd3bc5"
+    }
+  ]
+}

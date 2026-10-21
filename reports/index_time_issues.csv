@@ -1,0 +1,3 @@
+case,dataset,suite,system,system_name,root_cause_service,fault,fault_description,repetition,inject_time,n_metrics,n_timesteps,time_start,time_end,duration_minutes,normal_timesteps,faulty_timesteps,has_logs,n_logs,has_traces,n_traces,has_root_cause_file
+re1ob_currencyservice_loss_1,RE1-OB,RE1,ob,Online Boutique,currencyservice,loss,network packet loss,1,16933142,59,721,1693313863,1693314583,12.0,0,721,False,0,False,0,False
+re1ob_productcatalogservice_cpu_3,RE1-OB,RE1,ob,Online Boutique,productcatalogservice,cpu,CPU stress,3,1685373255,58,63,1685371737,1685371799,1.0,63,0,False,0,False,0,False

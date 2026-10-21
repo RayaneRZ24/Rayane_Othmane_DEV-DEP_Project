@@ -1,0 +1,1573 @@
+{
+  "dataset_revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "environment": {
+    "python": "3.11.9",
+    "pandas": "2.2.2",
+    "numpy": "2.4.6"
+  },
+  "scope": "12 purposively selected cases, six fault types in each of RE2-SS and RE2-OB; not a random sample",
+  "results": [
+    {
+      "case": "re2ss_carts_cpu_1",
+      "dataset": "RE2-SS",
+      "fault": "cpu",
+      "root_cause_service": "carts",
+      "inject_time": 1705596179,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 76,
+        "null_cells": 5,
+        "duplicate_rows": 0,
+        "memory_bytes": 876260,
+        "n_metrics": 75,
+        "null_fraction": 4.626416840157298e-05,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "rabbitmq-exporter_mem",
+          "catalogue-db_diskio",
+          "rabbitmq_diskio",
+          "catalogue_socket",
+          "catalogue-db_socket",
+          "payment_socket",
+          "queue-master_socket",
+          "rabbitmq_socket",
+          "rabbitmq-exporter_socket",
+          "session-db_socket",
+          "user-db_socket",
+          "front-end_error",
+          "orders_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "carts_cpu",
+          "carts_mem",
+          "carts_socket",
+          "carts_workload",
+          "carts_latency-50",
+          "carts_latency-90"
+        ],
+        "direct_fault_metric": "carts_cpu",
+        "direct_metric_normal_median": 1.4809490138640062,
+        "direct_metric_post_median": 49.993672746967945
+      },
+      "logs": {
+        "present": true,
+        "rows": 86592,
+        "columns": 3,
+        "null_cells": 1572,
+        "duplicate_rows": 8453,
+        "memory_bytes": 24833525,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 1572
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 1572,
+        "distinct_messages": 66138,
+        "root_service_rows": 1251,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "front-end",
+          "orders",
+          "orders-db",
+          "payment",
+          "queue-master",
+          "session-db",
+          "shipping",
+          "user"
+        ],
+        "time": {
+          "min": 1705595459.0,
+          "max": 1705596899.0,
+          "rows_in_metric_window": 86592,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 42905,
+        "rows_at_or_after_injection": 43687
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ss_catalogue_delay_1",
+      "dataset": "RE2-SS",
+      "fault": "delay",
+      "root_cause_service": "catalogue",
+      "inject_time": 1705640134,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 81,
+        "null_cells": 14,
+        "duplicate_rows": 0,
+        "memory_bytes": 933900,
+        "n_metrics": 80,
+        "null_fraction": 0.00012144344205412908,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "rabbitmq-exporter_mem",
+          "catalogue_diskio",
+          "catalogue-db_diskio",
+          "rabbitmq_diskio",
+          "orders-db_socket",
+          "payment_socket",
+          "queue-master_socket",
+          "rabbitmq_socket",
+          "rabbitmq-exporter_socket",
+          "carts_error",
+          "catalogue_error",
+          "front-end_error",
+          "orders_error",
+          "payment_error",
+          "user_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "catalogue_cpu",
+          "catalogue_mem",
+          "catalogue_diskio",
+          "catalogue_socket",
+          "catalogue_workload",
+          "catalogue_error",
+          "catalogue_latency-50",
+          "catalogue_latency-90"
+        ],
+        "direct_fault_metric": null
+      },
+      "logs": {
+        "present": true,
+        "rows": 88601,
+        "columns": 3,
+        "null_cells": 1481,
+        "duplicate_rows": 7633,
+        "memory_bytes": 29186145,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 1481
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 1481,
+        "distinct_messages": 69968,
+        "root_service_rows": 3715,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "front-end",
+          "orders",
+          "payment",
+          "queue-master",
+          "session-db",
+          "shipping",
+          "user",
+          "user-db"
+        ],
+        "time": {
+          "min": 1705639414.0,
+          "max": 1705640854.0,
+          "rows_in_metric_window": 88601,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 45015,
+        "rows_at_or_after_injection": 43586
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ss_orders_disk_1",
+      "dataset": "RE2-SS",
+      "fault": "disk",
+      "root_cause_service": "orders",
+      "inject_time": 1705822351,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 80,
+        "null_cells": 12676,
+        "duplicate_rows": 0,
+        "memory_bytes": 922372,
+        "n_metrics": 79,
+        "null_fraction": 0.11135024025158338,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "carts_diskio",
+          "catalogue_diskio",
+          "user_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [
+          "carts_diskio",
+          "catalogue_diskio",
+          "orders_diskio",
+          "session-db_diskio",
+          "orders_workload",
+          "payment_workload",
+          "shipping_workload",
+          "front-end_error",
+          "orders_error",
+          "user_error",
+          "carts_latency-50",
+          "orders_latency-50",
+          "payment_latency-50",
+          "shipping_latency-50",
+          "carts_latency-90",
+          "orders_latency-90",
+          "payment_latency-90",
+          "shipping_latency-90"
+        ],
+        "root_service_metrics": [
+          "orders_cpu",
+          "orders_mem",
+          "orders_diskio",
+          "orders_socket",
+          "orders_workload",
+          "orders_error",
+          "orders_latency-50",
+          "orders_latency-90"
+        ],
+        "direct_fault_metric": "orders_diskio",
+        "direct_metric_normal_median": 0.0,
+        "direct_metric_post_median": 0.0
+      },
+      "logs": {
+        "present": true,
+        "rows": 70374,
+        "columns": 3,
+        "null_cells": 1323,
+        "duplicate_rows": 6981,
+        "memory_bytes": 20118133,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 1323
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 1323,
+        "distinct_messages": 53992,
+        "root_service_rows": 2444,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "catalogue-db",
+          "front-end",
+          "orders",
+          "orders-db",
+          "payment",
+          "queue-master",
+          "rabbitmq",
+          "rabbitmq-exporter",
+          "session-db",
+          "shipping",
+          "user",
+          "user-db"
+        ],
+        "time": {
+          "min": 1705821631.0,
+          "max": 1705823071.0,
+          "rows_in_metric_window": 70374,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 43299,
+        "rows_at_or_after_injection": 27075
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ss_payment_loss_1",
+      "dataset": "RE2-SS",
+      "fault": "loss",
+      "root_cause_service": "payment",
+      "inject_time": 1705611754,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 79,
+        "null_cells": 1811,
+        "duplicate_rows": 0,
+        "memory_bytes": 910844,
+        "n_metrics": 78,
+        "null_fraction": 0.016112386341393975,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "rabbitmq-exporter_mem",
+          "catalogue-db_diskio",
+          "rabbitmq_diskio",
+          "catalogue_socket",
+          "catalogue-db_socket",
+          "queue-master_socket",
+          "rabbitmq_socket",
+          "rabbitmq-exporter_socket",
+          "session-db_socket",
+          "carts_error",
+          "catalogue_error",
+          "payment_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [
+          "payment_error"
+        ],
+        "root_service_metrics": [
+          "payment_cpu",
+          "payment_mem",
+          "payment_socket",
+          "payment_workload",
+          "payment_error",
+          "payment_latency-50",
+          "payment_latency-90"
+        ],
+        "direct_fault_metric": null
+      },
+      "logs": {
+        "present": true,
+        "rows": 92962,
+        "columns": 3,
+        "null_cells": 2353,
+        "duplicate_rows": 11453,
+        "memory_bytes": 25976568,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 2353
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 2353,
+        "distinct_messages": 63265,
+        "root_service_rows": 1687,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "front-end",
+          "orders",
+          "orders-db",
+          "payment",
+          "queue-master",
+          "session-db",
+          "shipping",
+          "user",
+          "user-db"
+        ],
+        "time": {
+          "min": 1705611034.0,
+          "max": 1705612474.0,
+          "rows_in_metric_window": 92962,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 43420,
+        "rows_at_or_after_injection": 49542
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ss_user_mem_1",
+      "dataset": "RE2-SS",
+      "fault": "mem",
+      "root_cause_service": "user",
+      "inject_time": 1705826446,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 78,
+        "null_cells": 36,
+        "duplicate_rows": 0,
+        "memory_bytes": 899316,
+        "n_metrics": 77,
+        "null_fraction": 0.00032445001216687547,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "rabbitmq-exporter_mem",
+          "catalogue-db_diskio",
+          "payment_diskio",
+          "rabbitmq_diskio",
+          "user_diskio",
+          "catalogue-db_socket",
+          "orders-db_socket",
+          "queue-master_socket",
+          "rabbitmq_socket",
+          "rabbitmq-exporter_socket",
+          "session-db_socket",
+          "front-end_error",
+          "orders_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "user_cpu",
+          "user_mem",
+          "user_diskio",
+          "user_socket",
+          "user_workload",
+          "user_latency-50",
+          "user_latency-90"
+        ],
+        "direct_fault_metric": "user_mem",
+        "direct_metric_normal_median": 8421376.0,
+        "direct_metric_post_median": 551100416.0
+      },
+      "logs": {
+        "present": true,
+        "rows": 87131,
+        "columns": 3,
+        "null_cells": 1600,
+        "duplicate_rows": 8652,
+        "memory_bytes": 24875371,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 1600
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 1600,
+        "distinct_messages": 66781,
+        "root_service_rows": 14243,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "front-end",
+          "orders",
+          "payment",
+          "queue-master",
+          "session-db",
+          "shipping",
+          "user",
+          "user-db"
+        ],
+        "time": {
+          "min": 1705825726.0,
+          "max": 1705827165.0,
+          "rows_in_metric_window": 87131,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 43424,
+        "rows_at_or_after_injection": 43707
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ss_carts_socket_1",
+      "dataset": "RE2-SS",
+      "fault": "socket",
+      "root_cause_service": "carts",
+      "inject_time": 1705632937,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 80,
+        "null_cells": 3,
+        "duplicate_rows": 0,
+        "memory_bytes": 922372,
+        "n_metrics": 79,
+        "null_fraction": 2.6353007317351698e-05,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "rabbitmq-exporter_mem",
+          "catalogue-db_diskio",
+          "rabbitmq_diskio",
+          "catalogue_socket",
+          "catalogue-db_socket",
+          "orders-db_socket",
+          "payment_socket",
+          "queue-master_socket",
+          "rabbitmq_socket",
+          "rabbitmq-exporter_socket",
+          "session-db_socket",
+          "user_socket",
+          "user-db_socket",
+          "catalogue_error",
+          "front-end_error",
+          "payment_error",
+          "user_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "carts_cpu",
+          "carts_mem",
+          "carts_socket",
+          "carts_workload",
+          "carts_error",
+          "carts_latency-50",
+          "carts_latency-90"
+        ],
+        "direct_fault_metric": "carts_socket",
+        "direct_metric_normal_median": 27.0,
+        "direct_metric_post_median": 39.0
+      },
+      "logs": {
+        "present": true,
+        "rows": 88689,
+        "columns": 3,
+        "null_cells": 1526,
+        "duplicate_rows": 8117,
+        "memory_bytes": 27869453,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 1526
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 1526,
+        "distinct_messages": 69330,
+        "root_service_rows": 1259,
+        "services": [
+          "carts",
+          "carts-db",
+          "catalogue",
+          "front-end",
+          "orders",
+          "payment",
+          "queue-master",
+          "session-db",
+          "shipping",
+          "user"
+        ],
+        "time": {
+          "min": 1705632217.0,
+          "max": 1705633657.0,
+          "rows_in_metric_window": 88689,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 44008,
+        "rows_at_or_after_injection": 44681
+      },
+      "traces": {
+        "present": false
+      }
+    },
+    {
+      "case": "re2ob_checkoutservice_cpu_1",
+      "dataset": "RE2-OB",
+      "fault": "cpu",
+      "root_cause_service": "checkoutservice",
+      "inject_time": 1705354566,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 73,
+        "null_cells": 4,
+        "duplicate_rows": 0,
+        "memory_bytes": 841676,
+        "n_metrics": 72,
+        "null_fraction": 3.855347366797748e-05,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "emailservice_diskio",
+          "recommendationservice_diskio",
+          "cartservice_socket",
+          "emailservice_socket",
+          "paymentservice_socket",
+          "productcatalogservice_socket",
+          "recommendationservice_socket",
+          "redis_socket",
+          "shippingservice_socket",
+          "currencyservice_error",
+          "productcatalogservice_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "checkoutservice_cpu",
+          "checkoutservice_mem",
+          "checkoutservice_socket",
+          "checkoutservice_workload",
+          "checkoutservice_latency-50",
+          "checkoutservice_latency-90"
+        ],
+        "direct_fault_metric": "checkoutservice_cpu",
+        "direct_metric_normal_median": 0.41785479108372325,
+        "direct_metric_post_median": 19.99256029388274
+      },
+      "logs": {
+        "present": true,
+        "rows": 171322,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 113314,
+        "memory_bytes": 29739263,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 12337,
+        "root_service_rows": 2007,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705353846.0,
+          "max": 1705355286.0,
+          "rows_in_metric_window": 171322,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 85667,
+        "rows_at_or_after_injection": 85655
+      },
+      "traces": {
+        "present": true,
+        "rows": 391997,
+        "columns": 11,
+        "null_cells": 60716,
+        "duplicate_rows": 0,
+        "memory_bytes": 224314719,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 18374,
+          "operationName": 0,
+          "parentSpanID": 23968,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 18374
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 23968,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705353846.065,
+          "max": 1705355285.97,
+          "rows_in_metric_window": 391997,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 196572,
+        "rows_at_or_after_injection": 195425
+      }
+    },
+    {
+      "case": "re2ob_currencyservice_delay_1",
+      "dataset": "RE2-OB",
+      "fault": "delay",
+      "root_cause_service": "currencyservice",
+      "inject_time": 1705702012,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 77,
+        "null_cells": 0,
+        "duplicate_rows": 0,
+        "memory_bytes": 887788,
+        "n_metrics": 76,
+        "null_fraction": 0.0,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "cartservice_diskio",
+          "currencyservice_diskio",
+          "emailservice_diskio",
+          "frontend_diskio",
+          "paymentservice_diskio",
+          "productcatalogservice_diskio",
+          "recommendationservice_diskio",
+          "adservice_socket",
+          "cartservice_socket",
+          "checkoutservice_socket",
+          "currencyservice_socket",
+          "emailservice_socket",
+          "paymentservice_socket",
+          "productcatalogservice_socket",
+          "recommendationservice_socket",
+          "redis_socket",
+          "shippingservice_socket",
+          "adservice_error",
+          "frontend_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "currencyservice_cpu",
+          "currencyservice_mem",
+          "currencyservice_diskio",
+          "currencyservice_socket",
+          "currencyservice_workload",
+          "currencyservice_latency-50",
+          "currencyservice_latency-90"
+        ],
+        "direct_fault_metric": null
+      },
+      "logs": {
+        "present": true,
+        "rows": 161224,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 103774,
+        "memory_bytes": 28045209,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 12196,
+        "root_service_rows": 45834,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705701292.0,
+          "max": 1705702732.0,
+          "rows_in_metric_window": 161224,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 89939,
+        "rows_at_or_after_injection": 71285
+      },
+      "traces": {
+        "present": true,
+        "rows": 383583,
+        "columns": 11,
+        "null_cells": 59863,
+        "duplicate_rows": 0,
+        "memory_bytes": 219495404,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 18098,
+          "operationName": 0,
+          "parentSpanID": 23667,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 18098
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 23667,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705701292.034,
+          "max": 1705702731.966,
+          "rows_in_metric_window": 383583,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 204523,
+        "rows_at_or_after_injection": 179060
+      }
+    },
+    {
+      "case": "re2ob_emailservice_disk_1",
+      "dataset": "RE2-OB",
+      "fault": "disk",
+      "root_cause_service": "emailservice",
+      "inject_time": 1705370095,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 74,
+        "null_cells": 8,
+        "duplicate_rows": 0,
+        "memory_bytes": 853204,
+        "n_metrics": 73,
+        "null_fraction": 7.605068778340764e-05,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "productcatalogservice_diskio",
+          "recommendationservice_diskio",
+          "adservice_socket",
+          "cartservice_socket",
+          "checkoutservice_socket",
+          "currencyservice_socket",
+          "emailservice_socket",
+          "frontend_socket",
+          "paymentservice_socket",
+          "productcatalogservice_socket",
+          "recommendationservice_socket",
+          "redis_socket",
+          "shippingservice_socket",
+          "currencyservice_error",
+          "frontend_error",
+          "frontend-external_error",
+          "productcatalogservice_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "emailservice_cpu",
+          "emailservice_mem",
+          "emailservice_diskio",
+          "emailservice_socket",
+          "emailservice_workload",
+          "emailservice_latency-50",
+          "emailservice_latency-90"
+        ],
+        "direct_fault_metric": "emailservice_diskio",
+        "direct_metric_normal_median": 0.0,
+        "direct_metric_post_median": 10386778664.216812
+      },
+      "logs": {
+        "present": true,
+        "rows": 168998,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 112098,
+        "memory_bytes": 29305942,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 12081,
+        "root_service_rows": 605,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705369375.0,
+          "max": 1705370815.0,
+          "rows_in_metric_window": 168998,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 84789,
+        "rows_at_or_after_injection": 84209
+      },
+      "traces": {
+        "present": true,
+        "rows": 387034,
+        "columns": 11,
+        "null_cells": 59803,
+        "duplicate_rows": 0,
+        "memory_bytes": 221470399,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 18135,
+          "operationName": 0,
+          "parentSpanID": 23533,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 18135
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 23533,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705369375.062,
+          "max": 1705370814.899,
+          "rows_in_metric_window": 387034,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 193798,
+        "rows_at_or_after_injection": 193236
+      }
+    },
+    {
+      "case": "re2ob_productcatalogservice_loss_1",
+      "dataset": "RE2-OB",
+      "fault": "loss",
+      "root_cause_service": "productcatalogservice",
+      "inject_time": 1705342830,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 73,
+        "null_cells": 916,
+        "duplicate_rows": 0,
+        "memory_bytes": 841676,
+        "n_metrics": 72,
+        "null_fraction": 0.008828745469966844,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "cartservice_diskio",
+          "emailservice_diskio",
+          "recommendationservice_diskio",
+          "adservice_socket",
+          "cartservice_socket",
+          "checkoutservice_socket",
+          "emailservice_socket",
+          "paymentservice_socket",
+          "redis_socket",
+          "shippingservice_socket"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [
+          "productcatalogservice_error"
+        ],
+        "root_service_metrics": [
+          "productcatalogservice_cpu",
+          "productcatalogservice_mem",
+          "productcatalogservice_socket",
+          "productcatalogservice_workload",
+          "productcatalogservice_error",
+          "productcatalogservice_latency-50",
+          "productcatalogservice_latency-90"
+        ],
+        "direct_fault_metric": null
+      },
+      "logs": {
+        "present": true,
+        "rows": 117601,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 76965,
+        "memory_bytes": 20379423,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 9210,
+        "root_service_rows": 35,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705342110.0,
+          "max": 1705343548.0,
+          "rows_in_metric_window": 117601,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 84869,
+        "rows_at_or_after_injection": 32732
+      },
+      "traces": {
+        "present": true,
+        "rows": 254889,
+        "columns": 11,
+        "null_cells": 42376,
+        "duplicate_rows": 0,
+        "memory_bytes": 145739096,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 12634,
+          "operationName": 0,
+          "parentSpanID": 17108,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 12634
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 17108,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705342110.001,
+          "max": 1705343549.558,
+          "rows_in_metric_window": 254889,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 193466,
+        "rows_at_or_after_injection": 61423
+      }
+    },
+    {
+      "case": "re2ob_recommendationservice_mem_1",
+      "dataset": "RE2-OB",
+      "fault": "mem",
+      "root_cause_service": "recommendationservice",
+      "inject_time": 1705458232,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 71,
+        "null_cells": 77,
+        "duplicate_rows": 0,
+        "memory_bytes": 818620,
+        "n_metrics": 70,
+        "null_fraction": 0.0007633587786259542,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "emailservice_diskio",
+          "recommendationservice_diskio",
+          "currencyservice_error",
+          "frontend-external_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [],
+        "root_service_metrics": [
+          "recommendationservice_cpu",
+          "recommendationservice_mem",
+          "recommendationservice_diskio",
+          "recommendationservice_socket",
+          "recommendationservice_workload",
+          "recommendationservice_latency-50",
+          "recommendationservice_latency-90"
+        ],
+        "direct_fault_metric": "recommendationservice_mem",
+        "direct_metric_normal_median": 43907072.0,
+        "direct_metric_post_median": 383725568.0
+      },
+      "logs": {
+        "present": true,
+        "rows": 174236,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 116424,
+        "memory_bytes": 30235987,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 12384,
+        "root_service_rows": 13194,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705457512.0,
+          "max": 1705458952.0,
+          "rows_in_metric_window": 174236,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 89140,
+        "rows_at_or_after_injection": 85096
+      },
+      "traces": {
+        "present": true,
+        "rows": 398876,
+        "columns": 11,
+        "null_cells": 61536,
+        "duplicate_rows": 0,
+        "memory_bytes": 228261746,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 18689,
+          "operationName": 0,
+          "parentSpanID": 24158,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 18689
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 24158,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705457512.017,
+          "max": 1705458951.945,
+          "rows_in_metric_window": 398876,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 203352,
+        "rows_at_or_after_injection": 195524
+      }
+    },
+    {
+      "case": "re2ob_checkoutservice_socket_1",
+      "dataset": "RE2-OB",
+      "fault": "socket",
+      "root_cause_service": "checkoutservice",
+      "inject_time": 1705656313,
+      "index_injection_matches": true,
+      "normal_rows": 720,
+      "post_injection_rows": 721,
+      "index_metric_rows_match": true,
+      "duration_seconds": 1440,
+      "metrics": {
+        "rows": 1441,
+        "columns": 78,
+        "null_cells": 4480,
+        "duplicate_rows": 0,
+        "memory_bytes": 899316,
+        "n_metrics": 77,
+        "null_fraction": 0.040376001514100056,
+        "infinite_cells": 0,
+        "duplicate_timestamps": 0,
+        "sorted_timestamps": true,
+        "median_step_seconds": 1.0,
+        "step_counts": {
+          "1.0": 1440
+        },
+        "constant_columns": [
+          "istio-init_mem",
+          "currencyservice_diskio",
+          "emailservice_diskio",
+          "frontend_diskio",
+          "paymentservice_diskio",
+          "productcatalogservice_diskio",
+          "recommendationservice_diskio",
+          "adservice_socket",
+          "cartservice_socket",
+          "currencyservice_socket",
+          "emailservice_socket",
+          "istio-init_socket",
+          "paymentservice_socket",
+          "productcatalogservice_socket",
+          "recommendationservice_socket",
+          "redis_socket",
+          "shippingservice_socket",
+          "frontend_error"
+        ],
+        "all_null_columns": [],
+        "columns_over_20pct_missing": [
+          "istio-init_mem",
+          "istio-init_socket",
+          "frontend_error",
+          "frontend-external_error"
+        ],
+        "root_service_metrics": [
+          "checkoutservice_cpu",
+          "checkoutservice_mem",
+          "checkoutservice_socket",
+          "checkoutservice_workload",
+          "checkoutservice_latency-50",
+          "checkoutservice_latency-90"
+        ],
+        "direct_fault_metric": "checkoutservice_socket",
+        "direct_metric_normal_median": 9.0,
+        "direct_metric_post_median": 22.0
+      },
+      "logs": {
+        "present": true,
+        "rows": 177376,
+        "columns": 3,
+        "null_cells": 0,
+        "duplicate_rows": 118722,
+        "memory_bytes": 30753811,
+        "column_names": [
+          "timestamp",
+          "container_name",
+          "message"
+        ],
+        "nulls_by_column": {
+          "timestamp": 0,
+          "container_name": 0,
+          "message": 0
+        },
+        "index_row_count_matches": true,
+        "empty_messages": 0,
+        "distinct_messages": 12427,
+        "root_service_rows": 1902,
+        "services": [
+          "adservice",
+          "cartservice",
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontend",
+          "paymentservice",
+          "recommendationservice",
+          "redis",
+          "shippingservice"
+        ],
+        "time": {
+          "min": 1705655593.0,
+          "max": 1705657033.0,
+          "rows_in_metric_window": 177376,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 89027,
+        "rows_at_or_after_injection": 88349
+      },
+      "traces": {
+        "present": true,
+        "rows": 404289,
+        "columns": 11,
+        "null_cells": 62921,
+        "duplicate_rows": 0,
+        "memory_bytes": 231339553,
+        "column_names": [
+          "time",
+          "traceID",
+          "spanID",
+          "serviceName",
+          "methodName",
+          "operationName",
+          "parentSpanID",
+          "startTimeMillis",
+          "startTime",
+          "duration",
+          "statusCode"
+        ],
+        "nulls_by_column": {
+          "time": 0,
+          "traceID": 0,
+          "spanID": 0,
+          "serviceName": 0,
+          "methodName": 19140,
+          "operationName": 0,
+          "parentSpanID": 24641,
+          "startTimeMillis": 0,
+          "startTime": 0,
+          "duration": 0,
+          "statusCode": 19140
+        },
+        "index_row_count_matches": true,
+        "duplicate_span_keys": 0,
+        "negative_durations": 0,
+        "null_parent_ids": 24641,
+        "services": [
+          "checkoutservice",
+          "currencyservice",
+          "emailservice",
+          "frontendservice",
+          "paymentservice",
+          "productcatalogservice",
+          "recommendationservice"
+        ],
+        "time": {
+          "min": 1705655593.0,
+          "max": 1705657032.82,
+          "rows_in_metric_window": 404289,
+          "rows_outside_metric_window": 0
+        },
+        "rows_before_injection": 202936,
+        "rows_at_or_after_injection": 201353
+      }
+    }
+  ]
+}
