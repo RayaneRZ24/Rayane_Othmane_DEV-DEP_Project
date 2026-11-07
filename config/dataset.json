@@ -1,15 +1,41 @@
 {
-  "name": "RCAEval",
-  "subset": "RE2-OB",
-  "system": "Online Boutique",
-  "repository": "phamquiluan/RCAEval",
-  "revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "name": "SMD",
+  "full_name": "Server Machine Dataset",
+  "sector": "IT infrastructure monitoring",
+  "repository": "NetManAIOps/OmniAnomaly",
+  "revision": "7fb0e0acf89ea49908896bcc9f9e80fcfff6baf4",
   "decision_date": "2026-10-21",
-  "expected_cases": 90,
-  "modalities": ["metrics", "logs", "traces"],
-  "license_declared_on_dataset_card": "MIT",
-  "initial_download": "all metrics and logs, traces for six representative incidents",
-  "faults": ["cpu", "mem", "disk", "delay", "loss", "socket"],
-  "ground_truth_use": "evaluation only; never expose the case path, fault label, root-cause label or injection time to the monitoring agent",
-  "service_aliases": {"frontendservice": "frontend"}
+  "status": "selected_after_full_file_audit",
+  "expected_machines": 28,
+  "expected_dimensions": 38,
+  "expected_train_rows": 708405,
+  "expected_test_rows": 708420,
+  "modalities": [
+    "metrics"
+  ],
+  "feature_dictionary": "config/smd_features.json",
+  "raw_directory": "data/raw/SMD",
+  "license_file": "third_party/SMD-LICENSE.txt",
+  "source_license": "MIT, explicitly included in ServerMachineDataset/LICENSE",
+  "axis": "sample_index",
+  "sampling_interval_seconds": null,
+  "absolute_timestamps_available": false,
+  "values": "source-normalized, observed range [0,1]; physical scaling parameters unavailable",
+  "pilot_machines": [
+    "machine-1-1",
+    "machine-2-1",
+    "machine-3-1"
+  ],
+  "evaluation_labels": "test_label",
+  "interpretation_labels": "interpretation_label; supplementary only, interval alignment is imperfect",
+  "ground_truth_use": "evaluation only; never feed test_label or interpretation_label into the detector or runtime API",
+  "split_policy": "preserve each machine's published train/test order; validation is a chronological tail of train; do not tune on test",
+  "limitations": [
+    "No system logs or distributed traces",
+    "No verified absolute dates or exact sampling interval",
+    "Normalized values cannot be displayed as physical percentages or bytes",
+    "Attribution dimensions do not certify a physical root cause",
+    "Training samples have no per-point anomaly labels",
+    "Original normalization fitting scope cannot be verified from the published files"
+  ]
 }

@@ -12,14 +12,18 @@ async function forward(request: NextRequest, context: { params: Promise<{ path: 
   }
   base.pathname = `/${path.map(encodeURIComponent).join("/")}`;
   base.search = request.nextUrl.search;
-  const isStream = path.join("/") === "api/v1/system/events";
+  const isStream = path.at(-1) === "events";
   const signal = isStream
     ? request.signal
     : AbortSignal.any([request.signal, AbortSignal.timeout(8000)]);
   try {
+    const headers = new Headers({ Accept: isStream ? "text/event-stream" : "application/json" });
+    if (request.headers.has("Content-Type")) headers.set("Content-Type", request.headers.get("Content-Type")!);
+    if (request.headers.has("Last-Event-ID")) headers.set("Last-Event-ID", request.headers.get("Last-Event-ID")!);
     const upstream = await fetch(base, {
       method: request.method, cache: "no-store", signal,
-      headers: { Accept: isStream ? "text/event-stream" : "application/json" },
+      headers,
+      body: request.method === "POST" ? await request.text() : undefined,
     });
     return new Response(upstream.body, {
       status: upstream.status,

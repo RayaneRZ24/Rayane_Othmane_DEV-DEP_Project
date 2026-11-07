@@ -1,0 +1,30 @@
+{
+  "baseline_config": {
+    "fit_fraction": 0.8,
+    "minimum_fit_points": 100,
+    "minimum_validation_points": 20,
+    "minimum_z": 6.0,
+    "persistence": 3,
+    "recovery": 5,
+    "scale_floor": 0.001,
+    "validation_quantile": 0.995
+  },
+  "date": "2026-10-22",
+  "methods": [
+    "robust-mad-v1",
+    "pca-joint-v1"
+  ],
+  "metrics": "pointwise, no point adjustment; active alerts union across indicators",
+  "pca_config": {
+    "eigenvalue_absolute_floor": 1e-06,
+    "eigenvalue_relative_floor": 0.001,
+    "explained_variance": 0.9,
+    "minimum_residual_threshold": 36.0,
+    "persistence": 3,
+    "recovery": 5,
+    "residual_scale_floor": 0.1,
+    "validation_quantile": 0.995
+  },
+  "selection": "none; baseline remains default; both methods explicitly available",
+  "splits": "chronological 80/20 within published train; test labels for reporting only"
+}

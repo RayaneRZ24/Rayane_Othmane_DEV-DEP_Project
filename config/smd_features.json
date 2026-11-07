@@ -1,0 +1,310 @@
+{
+  "source": "https://github.com/NetManAIOps/OmniAnomaly/issues/22#issuecomment-771310719",
+  "note": "Order supplied by a repository collaborator; detailed units and original scaling parameters are not supplied. All downloaded values lie in [0,1].",
+  "features": [
+    {
+      "index_1_based": 1,
+      "source_name": "cpu_r",
+      "group": "cpu",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Utilisation CPU"
+    },
+    {
+      "index_1_based": 2,
+      "source_name": "load_1",
+      "group": "cpu",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Charge système · 1"
+    },
+    {
+      "index_1_based": 3,
+      "source_name": "load_5",
+      "group": "cpu",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Charge système · 5"
+    },
+    {
+      "index_1_based": 4,
+      "source_name": "load_15",
+      "group": "cpu",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Charge système · 15"
+    },
+    {
+      "index_1_based": 5,
+      "source_name": "mem_shmem",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Mémoire partagée"
+    },
+    {
+      "index_1_based": 6,
+      "source_name": "mem_u",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Mémoire · mem_u"
+    },
+    {
+      "index_1_based": 7,
+      "source_name": "mem_u_e",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Mémoire · mem_u_e"
+    },
+    {
+      "index_1_based": 8,
+      "source_name": "total_mem",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Mémoire totale"
+    },
+    {
+      "index_1_based": 9,
+      "source_name": "disk_q",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "File disque"
+    },
+    {
+      "index_1_based": 10,
+      "source_name": "disk_r",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Lectures disque"
+    },
+    {
+      "index_1_based": 11,
+      "source_name": "disk_rb",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Volume lu"
+    },
+    {
+      "index_1_based": 12,
+      "source_name": "disk_svc",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Service disque"
+    },
+    {
+      "index_1_based": 13,
+      "source_name": "disk_u",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Utilisation disque"
+    },
+    {
+      "index_1_based": 14,
+      "source_name": "disk_w",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Écritures disque"
+    },
+    {
+      "index_1_based": 15,
+      "source_name": "disk_wa",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Attente disque"
+    },
+    {
+      "index_1_based": 16,
+      "source_name": "disk_wb",
+      "group": "disk",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Volume écrit"
+    },
+    {
+      "index_1_based": 17,
+      "source_name": "si",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Swap entrant"
+    },
+    {
+      "index_1_based": 18,
+      "source_name": "so",
+      "group": "memory",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Swap sortant"
+    },
+    {
+      "index_1_based": 19,
+      "source_name": "eth1_fi",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Réseau entrant"
+    },
+    {
+      "index_1_based": 20,
+      "source_name": "eth1_fo",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Réseau sortant"
+    },
+    {
+      "index_1_based": 21,
+      "source_name": "eth1_pi",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Paquets entrants"
+    },
+    {
+      "index_1_based": 22,
+      "source_name": "eth1_po",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Paquets sortants"
+    },
+    {
+      "index_1_based": 23,
+      "source_name": "tcp_tw",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "TCP · time wait"
+    },
+    {
+      "index_1_based": 24,
+      "source_name": "tcp_use",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Utilisation TCP"
+    },
+    {
+      "index_1_based": 25,
+      "source_name": "active_opens",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Ouvertures actives"
+    },
+    {
+      "index_1_based": 26,
+      "source_name": "curr_estab",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Connexions établies"
+    },
+    {
+      "index_1_based": 27,
+      "source_name": "in_errs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Erreurs entrantes"
+    },
+    {
+      "index_1_based": 28,
+      "source_name": "in_segs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Segments entrants"
+    },
+    {
+      "index_1_based": 29,
+      "source_name": "listen_overflows",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Dépassements de file"
+    },
+    {
+      "index_1_based": 30,
+      "source_name": "out_rsts",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Réinitialisations sortantes"
+    },
+    {
+      "index_1_based": 31,
+      "source_name": "out_segs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Segments sortants"
+    },
+    {
+      "index_1_based": 32,
+      "source_name": "passive_opens",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Ouvertures passives"
+    },
+    {
+      "index_1_based": 33,
+      "source_name": "retransegs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Retransmissions TCP"
+    },
+    {
+      "index_1_based": 34,
+      "source_name": "tcp_timeouts",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Expirations TCP"
+    },
+    {
+      "index_1_based": 35,
+      "source_name": "udp_in_dg",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Datagrammes entrants"
+    },
+    {
+      "index_1_based": 36,
+      "source_name": "udp_out_dg",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Datagrammes sortants"
+    },
+    {
+      "index_1_based": 37,
+      "source_name": "udp_rcv_buf_errs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Erreurs réception UDP"
+    },
+    {
+      "index_1_based": 38,
+      "source_name": "udp_snd_buf_errs",
+      "group": "network",
+      "display_unit": "normalized",
+      "physical_unit": null,
+      "label": "Erreurs émission UDP"
+    }
+  ]
+}

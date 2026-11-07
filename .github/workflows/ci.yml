@@ -27,6 +27,7 @@ jobs:
       TEST_DATABASE_URL: postgresql+psycopg://smartops:ci_only_password@127.0.0.1:5432/smartops
       NEXT_TELEMETRY_DISABLED: "1"
       BACKEND_URL: http://127.0.0.1:8000
+      MONITORING_DIR: data/monitoring-test
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
@@ -41,6 +42,7 @@ jobs:
       - run: uv sync --locked
       - run: uv run --no-sync pytest -q
       - run: uv run --no-sync alembic upgrade head
+      - run: uv run --no-sync python tests/fixtures/session.py --output data/monitoring-test
       - run: npm ci --no-fund --no-audit
         working-directory: frontend
       - run: npm run build

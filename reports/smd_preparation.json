@@ -1,0 +1,8 @@
+{
+  "checks": "schema, order, original CPU series, counts, annotation isolation",
+  "result": "passed",
+  "machines": 28,
+  "training_observations": 708405,
+  "replay_observations": 708420,
+  "evaluation_anomaly_points": 29444
+}

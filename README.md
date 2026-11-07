@@ -1,27 +1,43 @@
-# SmartOps — Agent de monitoring intelligent
+# SmartOps — Supervision intelligente d’infrastructures informatiques
 
-Projet en binôme pour la matière « Développement et déploiement d'applications intelligentes ».
+**SMD — Server Machine Dataset est le seul dataset retenu pour le projet et ses prochaines étapes.**
+La version est figée dans [config/dataset.json](config/dataset.json), les variables dans
+[config/smd_features.json](config/smd_features.json), et la décision dans
+[choix_dataset.md](docs_informatifs/choix_dataset.md).
 
-## Décision initiale
+## Données
 
-Le jeu de données principal est **RCAEval, sous-ensemble RE2-OB (Online Boutique)** :
-90 expériences de panne, métriques, logs, traces distribuées et service responsable annoté.
-La version est figée dans [config/dataset.json](config/dataset.json).
+28 machines, 38 variables par machine : CPU, charge, mémoire, disque et réseau.
+708 405 observations d’apprentissage et 708 420 observations de test.
+Les valeurs sont normalisées ; les fichiers ne fournissent ni dates absolues,
+ni logs système, ni traces distribuées. Les annotations sont réservées à l’évaluation.
 
-Lire [l'étude et la décision](docs_informatifs/choix_dataset.md) avant de développer l'agent.
-La [conception préliminaire](docs_informatifs/conception_preliminaire.md) définit le périmètre,
-les cas d'utilisation, l'architecture et les critères de réception proposés.
-La [conception détaillée](docs_informatifs/conception_detaillee.md) fixe les technologies,
-les modules, les règles de relecture et de détection, ainsi que le modèle de stockage.
-Le [contrat API v1](docs_informatifs/contrat_api_v1.md) décrit les routes à implémenter.
-La [stratégie technologique](docs_informatifs/strategie_technologique.md) précise le
-rendu visuel attendu et les extensions avancées proposées.
-Les résultats bruts de l'audit sont dans `reports/`. Le socle applicatif est implémenté ;
-la relecture du dataset, la détection et le diagnostic métier restent à développer.
+```powershell
+uv sync --locked
+uv run --no-sync python scripts/download_smd.py
+uv run --no-sync python scripts/audit_smd.py
+uv run --no-sync python scripts/prepare_smd.py
+```
 
-## Lancer le socle applicatif
+`--verify-only` vérifie les 113 fichiers sans accès réseau. Les données sont dans
+`data/raw/SMD`, la provenance dans `data/sources/SMD`, les rapports dans `reports/smd_*`.
+Les données sont exclues de Git. La licence est dans [third_party/SMD-LICENSE.txt](third_party/SMD-LICENSE.txt).
 
-Avec Docker Desktop démarré, depuis la racine :
+## Application
+
+Le socle Next.js/React, FastAPI, PostgreSQL et Docker Compose est disponible.
+La relecture SMD est intégrée : 28 machines, 38 indicateurs par machine, familles
+CPU/mémoire/disque/réseau, cadence de 1 à 60 observations par seconde, pause/reprise/arrêt.
+Les courbes et le tableau présentent les valeurs normalisées jusqu’au curseur confirmé.
+Le registre préparé est sous `data/monitoring-smd` ; les annotations sont isolées sous
+`data/evaluation-smd`, jamais monté dans le backend. La cadence est celle de présentation,
+pas une fréquence physique d’origine. Les dates ne sont pas inventées.
+Deux méthodes sont disponibles avant lancement : **Par indicateur** (référence robuste)
+et **Indicateurs combinés** (PCA). Le détecteur choisi analyse les 38 variables et persiste
+les alertes et leurs mesures justificatives. Leur précision reste faible :
+il sert de référence expérimentale, pas de garantie de panne. Voir
+[la référence](docs_informatifs/detection.md) et
+[la comparaison PCA](docs_informatifs/comparaison_detecteurs.md).
 
 ```powershell
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
@@ -29,64 +45,21 @@ docker compose up --build -d
 ```
 
 Interface : <http://localhost:3000>. API : <http://localhost:18000/docs>.
-L'écran affiche la disponibilité des services, la latence et la synchronisation live.
-Les vérifications techniques de persistance restent accessibles dans l'API et les tests.
-Les courbes montrent des temps de réponse réellement mesurés ; elles ne rejouent pas encore RCAEval.
-Voir [le guide de démarrage et de test](docs_informatifs/demarrage.md).
-Le [rapport de validation](reports/validation_socle.md) décrit les builds, les cinq
-tests backend et les deux tests navigateur effectivement exécutés.
+Voir [le guide de démarrage](docs_informatifs/demarrage.md).
 
-## Stack applicative retenue
+## Prochaines étapes
 
-- Frontend dédié : **Next.js, React, TypeScript, Tailwind CSS et shadcn/ui**.
-- Graphiques : **Apache ECharts** ; synchronisation : **TanStack Query et SSE**.
-- Backend : **FastAPI et Pydantic** ; analyse : Python.
-- Stockage : **PostgreSQL**, modèles SQLAlchemy, pilote Psycopg 3 et migrations Alembic ; télémétrie brute en Parquet.
-- Livraison : Docker Compose, pytest, Playwright et GitHub Actions.
+1. Consolider une validation indépendante des résultats exploratoires.
+2. Réduire les fausses alertes sans ajuster les seuils sur les annotations de test.
+3. Regrouper les alertes en incidents et enrichir les explications.
+4. Ajouter les recommandations vérifiables.
 
-L'interface doit être une console d'observabilité conçue sur mesure. Streamlit est
-exclu du projet à la demande de l'utilisateur. MLflow, OpenTelemetry et un diagnostic
-orchestré avec LangGraph sont des extensions planifiées ou proposées, pas des composants
-déjà installés ou implémentés.
+La [conception préliminaire](docs_informatifs/conception_preliminaire.md), la
+[conception détaillée](docs_informatifs/conception_detaillee.md) et le
+[contrat API](docs_informatifs/contrat_api_v1.md) distinguent le socle des fonctions prévues.
 
-## Reproduire l'étude
+## Technologies
 
-Python 3.11. Depuis la racine du projet :
-
-```powershell
-python -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements-audit.txt
-.venv\Scripts\python.exe scripts/inspect_dataset_sources.py
-.venv\Scripts\python.exe scripts/download_audit_sample.py
-.venv\Scripts\python.exe scripts/audit_datasets.py
-.venv\Scripts\python.exe scripts/download_audit_sample.py --all-ob-metrics-logs
-.venv\Scripts\python.exe scripts/audit_datasets.py --selected
-.venv\Scripts\python.exe scripts/summarize_audit.py
-.venv\Scripts\python.exe scripts/plot_audit_sample.py
-```
-
-Les deux premières étapes téléchargent des sources publiques ; aucun compte ni clé API n'est nécessaire.
-Le téléchargement reprend les fichiers déjà complets. Un échec réseau est signalé ; relancer la commande.
-Les téléchargements sont stockés sous `data/`, exclu de Git. Les manifestes contiennent les URL,
-la révision et les empreintes SHA-256. Les empreintes assurent la traçabilité locale ; elles ne
-remplacent pas une vérification d'intégrité auprès de l'éditeur.
-
-## Fichiers utiles
-
-- `reports/dataset_inventory.csv` : inventaire des 735 cas depuis l'index éditeur.
-- `reports/sample_quality.csv` : audit de 12 cas, six Sock Shop et six Online Boutique.
-- `reports/sample_audit.json` : mesures détaillées, dont la qualité des traces échantillonnées.
-- `reports/selected_quality.csv` : audit des métriques/logs des 90 cas retenus.
-- `reports/selected_audit.json` : détail de cet audit complet ; traces uniquement comptées depuis l'index.
-- `reports/selected_summary.json` : bilan, vérification des empreintes et couverture temporelle.
-- `reports/incident_examples.png` et `.pdf` : trois séries réelles avant/après injection, sans interpolation.
-
-## Prochaine étape
-
-Brancher les scénarios préparés sur le socle : relecture déterministe, détection simple
-et persistance d'un incident. Les routes de relecture et de diagnostic sont décrites
-dans le contrat cible ; elles ne sont pas encore exposées par l'API.
-Les paramètres de [monitoring.example.json](config/monitoring.example.json) sont des valeurs
-initiales de conception, non validées expérimentalement. Aucun résultat de modèle n'est annoncé.
-Les recommandations correctives viendront de procédures documentées : le dataset n'annote pas
-la réussite d'actions de remédiation.
+Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, ECharts, TanStack Query ;
+FastAPI/Pydantic ; PostgreSQL, SQLAlchemy, Psycopg 3, Alembic et Parquet ;
+Docker Compose, pytest, Playwright et GitHub Actions.

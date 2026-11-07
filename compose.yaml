@@ -30,6 +30,8 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-smartops}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-smartops}
+    volumes:
+      - ./data/monitoring-smd:/app/data/monitoring-smd:ro
     depends_on:
       migrate:
         condition: service_completed_successfully

@@ -3,6 +3,7 @@ import json
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from uuid import UUID, uuid4
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.concurrency import run_in_threadpool
@@ -18,6 +19,8 @@ from sqlalchemy.orm import Session
 from smartops import __version__
 from smartops.config import Settings
 from smartops.storage import IntegrationProbe, database_ready, make_engine
+from smartops.replay import ReplayError, ReplayManager
+from smartops.replay_api import router as replay_router
 
 
 class Health(BaseModel):
@@ -41,16 +44,49 @@ def unavailable() -> HTTPException:
     )
 
 
-def create_app(settings: Settings | None = None, engine: Engine | None = None) -> FastAPI:
+def create_app(settings: Settings | None = None, engine: Engine | None = None,
+               monitoring_dir: Path | None = None, worker_enabled: bool = True, monotonic=None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         owned = engine is None
-        app.state.engine = engine or make_engine((settings or Settings()).database_url.get_secret_value())
-        yield
-        if owned:
-            app.state.engine.dispose()
+        resolved = settings or (Settings() if owned else None)
+        app.state.engine = engine or make_engine(resolved.database_url.get_secret_value())
+        root = monitoring_dir if monitoring_dir is not None else (resolved.monitoring_dir if resolved else Path("data/monitoring-smd"))
+        options = {"monotonic": monotonic} if monotonic else {}
+        app.state.replay = ReplayManager(app.state.engine, root, **options)
+        if await run_in_threadpool(database_ready, app.state.engine):
+            await run_in_threadpool(app.state.replay.recover)
+
+        async def worker():
+            while True:
+                await asyncio.sleep(.1)
+                try:
+                    await run_in_threadpool(app.state.replay.tick)
+                except (SQLAlchemyError, ReplayError):
+                    await run_in_threadpool(app.state.replay.interrupt)
+
+        task = asyncio.create_task(worker()) if worker_enabled else None
+        try:
+            yield
+        finally:
+            if task:
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
+            await run_in_threadpool(app.state.replay.interrupt)
+            if owned:
+                app.state.engine.dispose()
 
     app = FastAPI(title="SmartOps API", version=__version__, lifespan=lifespan)
+    app.include_router(replay_router)
+
+    @app.exception_handler(ReplayError)
+    async def replay_error(request: Request, error: ReplayError):
+        return JSONResponse(status_code=error.status, content={"error": {
+            "code": error.code, "message": error.message, "request_id": str(uuid4()),
+        }})
 
     @app.exception_handler(StarletteHTTPException)
     async def http_error(request: Request, error: StarletteHTTPException):
