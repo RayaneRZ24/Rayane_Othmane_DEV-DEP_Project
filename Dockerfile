@@ -8,5 +8,7 @@ COPY src ./src
 RUN uv sync --locked --no-dev --no-editable
 COPY alembic.ini ./
 COPY migrations ./migrations
+RUN useradd --system --no-create-home --uid 10001 smartops
+USER smartops
 EXPOSE 8000
 CMD ["uvicorn", "smartops.api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
