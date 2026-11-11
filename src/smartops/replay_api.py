@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 from typing import Literal
 from uuid import UUID
 
@@ -11,6 +12,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from smartops.replay import ReplayError
 
+logger = logging.getLogger("smartops.replay_api")
 router = APIRouter(prefix="/api/v1", tags=["Relecture"])
 
 
@@ -28,12 +30,20 @@ class Command(BaseModel):
     action: Literal["start", "pause", "resume", "stop"]
 
 
+MUTATING = {"create", "command"}
+MAX_OFFSET = 1_000_000
+
+
 def call(request, method, *args):
     manager = request.app.state.replay
     try:
         return getattr(manager, method)(*args)
     except SQLAlchemyError:
-        manager.interrupt()
+        logger.exception("Storage error in replay.%s", method)
+        # Only a failed write can leave the active run in an unknown state.
+        # A failing read must never interrupt someone else's replay.
+        if method in MUTATING:
+            manager.interrupt()
         raise ReplayError(503, "STORAGE_UNAVAILABLE", "Le stockage est temporairement indisponible.") from None
 
 
@@ -78,7 +88,7 @@ async def events(request: Request, identifier: UUID, last_event_id: str | None =
     if last_event_id is not None:
         try:
             after = int(last_event_id)
-            if after < 1:
+            if after < 1 or after > 2**62:
                 raise ValueError()
         except ValueError:
             raise ReplayError(409, "INVALID_EVENT_CURSOR", "Le curseur de connexion est invalide.") from None
@@ -108,7 +118,7 @@ async def events(request: Request, identifier: UUID, last_event_id: str | None =
 
 
 @router.get("/runs/{identifier}/alerts")
-def alerts(request: Request, identifier: UUID, offset: int = Query(default=0, ge=0),
+def alerts(request: Request, identifier: UUID, offset: int = Query(default=0, ge=0, le=MAX_OFFSET),
            limit: int = Query(default=100, ge=1, le=500),
            resource: Literal["cpu", "memory", "disk", "network"] | None = None):
     return call(request, "alerts", identifier, offset, limit, resource)
