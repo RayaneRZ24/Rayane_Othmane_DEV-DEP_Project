@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from uuid import UUID, uuid4
@@ -21,6 +22,10 @@ from smartops.config import Settings
 from smartops.storage import IntegrationProbe, database_ready, make_engine
 from smartops.replay import ReplayError, ReplayManager
 from smartops.replay_api import router as replay_router
+
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
+logger = logging.getLogger("smartops")
 
 
 class Health(BaseModel):
@@ -62,7 +67,14 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None,
                 await asyncio.sleep(.1)
                 try:
                     await run_in_threadpool(app.state.replay.tick)
+                except asyncio.CancelledError:
+                    raise
                 except (SQLAlchemyError, ReplayError):
+                    logger.exception("Replay worker: storage or replay error, interrupting the run")
+                    await run_in_threadpool(app.state.replay.interrupt)
+                except Exception:
+                    # Never let an unexpected error silently kill the worker.
+                    logger.exception("Replay worker: unexpected error, interrupting the run")
                     await run_in_threadpool(app.state.replay.interrupt)
 
         task = asyncio.create_task(worker()) if worker_enabled else None
@@ -84,14 +96,19 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None,
 
     @app.exception_handler(ReplayError)
     async def replay_error(request: Request, error: ReplayError):
+        request_id = str(uuid4())
+        logger.warning("%s %s -> %s %s [request_id=%s]", request.method, request.url.path, error.status, error.code, request_id)
         return JSONResponse(status_code=error.status, content={"error": {
-            "code": error.code, "message": error.message, "request_id": str(uuid4()),
+            "code": error.code, "message": error.message, "request_id": request_id,
         }})
 
     @app.exception_handler(StarletteHTTPException)
     async def http_error(request: Request, error: StarletteHTTPException):
         detail = error.detail if isinstance(error.detail, dict) else {"code": "HTTP_ERROR", "message": str(error.detail)}
-        return JSONResponse(status_code=error.status_code, content={"error": {**detail, "request_id": str(uuid4())}})
+        request_id = str(uuid4())
+        if error.status_code >= 500:
+            logger.warning("%s %s -> %s [request_id=%s]", request.method, request.url.path, error.status_code, request_id)
+        return JSONResponse(status_code=error.status_code, content={"error": {**detail, "request_id": request_id}})
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, error: RequestValidationError):
