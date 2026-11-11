@@ -10,7 +10,11 @@ async function forward(request: NextRequest, context: { params: Promise<{ path: 
   if (path.some((segment) => segment === ".." || segment === "." || segment.includes("/"))) {
     return Response.json({ error: "Chemin invalide." }, { status: 400 });
   }
-  base.pathname = `/${path.map(encodeURIComponent).join("/")}`;
+  // Expose only the replay API: no /docs, /openapi.json, /health or technical probes (database writes).
+  if (path[0] !== "api" || path[1] !== "v1" || path[2] === "system") {
+    return Response.json({ error: "Ressource introuvable." }, { status: 404 });
+  }
+  base.pathname =`/${path.map(encodeURIComponent).join("/")}`;
   base.search = request.nextUrl.search;
   const isStream = path.at(-1) === "events";
   const signal = isStream
